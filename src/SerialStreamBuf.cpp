@@ -37,7 +37,6 @@
 #include <cassert>
 #include <cstring>
 #include <fcntl.h>
-#include <linux/serial.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 
@@ -283,14 +282,12 @@ namespace LibSerial
          */
         int GetNumberOfBytesAvailable() ;
 
-#ifdef __linux__
         /**
          * @brief Gets a list of available serial ports.
          * @return Returns a std::vector of std::strings with the name of
          *         each available serial port.
          */
         std::vector<std::string> GetAvailableSerialPorts() const ;
-#endif
 
         /**
          * @brief Writes up to n characters from the character sequence at
@@ -592,13 +589,11 @@ namespace LibSerial
         return mImpl->GetNumberOfBytesAvailable() ;
     }
 
-#ifdef __linux__
     std::vector<std::string>
     SerialStreamBuf::GetAvailableSerialPorts() const
     {
         return mImpl->GetAvailableSerialPorts() ;
     }
-#endif
 
     std::streambuf*
     SerialStreamBuf::setbuf(char_type* character, std::streamsize numberOfBytes)
@@ -928,14 +923,12 @@ namespace LibSerial
         return mSerialPort.GetNumberOfBytesAvailable() ;
     }
 
-#ifdef __linux__
     inline
     std::vector<std::string>
     SerialStreamBuf::Implementation::GetAvailableSerialPorts() const
     {
         return mSerialPort.GetAvailableSerialPorts() ;
     }
-#endif
 
     inline
     std::streamsize
