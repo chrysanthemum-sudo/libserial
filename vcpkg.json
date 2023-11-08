@@ -1,0 +1,10 @@
+{
+  "name": "serialstream",
+  "version": "1.2.1",  
+  "description": "Cross-platform C++ header-only library for serial ports.",
+  "homepage": "https://github.com/crayzeewulf/libserial",
+  "supports": "!uwp",
+  "dependencies": [
+    "asio"
+  ]
+}
